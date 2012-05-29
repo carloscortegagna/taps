@@ -76,7 +76,7 @@ Data   : #{data}
   # this is not true for other databases so we must check if the field is
   # actually text and manually convert it back to a string
   def incorrect_blobs(db, table)
-    return [] if (db.url =~ /mysql:\/\//).nil?
+    return [] if (db.url =~ /mysql:\/\//).nil? && (db.url =~ /mysql2:\/\//).nil?
 
     columns = []
     db.schema(table).each do |data|
